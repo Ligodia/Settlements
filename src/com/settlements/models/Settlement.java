@@ -103,10 +103,10 @@ public class Settlement
         this.name = name;
     }
 
-//    public int getSize()
-//    {
-//        return inhabitants.getSize();
-//    }
+    public int getSize()
+    {
+        return inhabitants.getSize();
+    }
 
     @Override
     public boolean equals(Object o)

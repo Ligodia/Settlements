@@ -34,6 +34,26 @@ public class SettlerGroup
         this.settlers.put(founder, SettlerType.FOUNDER);
     }
 
+    public int getSize()
+    {
+        return settlers.size();
+    }
+
+    public void addSettler(Settler settler)
+    {
+        settlers.put(settler, SettlerType.SETTLER);
+    }
+
+    public void removeSettler(Settler settler)
+    {
+        settlers.remove(settler);
+    }
+
+    public boolean contains(Settler settler)
+    {
+        return settlers.containsKey(settler);
+    }
+
     @Override
     public boolean equals(Object obj)
     {
