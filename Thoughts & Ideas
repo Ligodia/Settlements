@@ -1,0 +1,61 @@
+Dan should improve his coding style. Although I am warming to some of your ways of writing code and seeing some practicalities.
+
+Should each Settlement have ranks other than just the Leaders and Settlers? (Similar to how Towny has 'helper', 'vip', and other customised ranks?)
+
+Also, each Settlement should have a founder rank (perhaps invisibly), who has extra commands to deal with the other leaders. 
+I've added this, and a getter, and modified constructors. However I've left the 'founder' variable as null when the constructor gives a Set of Leaders.
+On a similar note however, why are there no getters for the HashSet of Leaders and Settlers in each SettlerGroup?
+
+Does the Settler class's equals() method need to compare anything other than whether they are the same player?
+
+Moved the MAXLEADERS int into the SettlerGroup class's variable's parameter when initialised instead of the 1 (forgotten the name).
+
+Should the Settlement class have class variables:
+	private Settlement superSettlement;
+	private List<Settlement> subSettlements;
+This would represent, as you can guess, the main settlement that this settlement is a part of, and any smaller settlements within this settlement.
+Obviously either can be null, and we'd add at least one constructor in case a settlement is being made within a larger settlement.
+
+You suggested you weren't using ColumnController anymore? The code looks good. However I'm wondering if it should all be static? Same with ErrorController, if that's finished.
+
+Should SettlerController have a constructor that allows you to add a Map already? When a server restarts I assume this would be needed?
+^ Same for SettlementController with it's HashMap of settlements.
+
+------
+I don't think the SettlementType method in SettlementController is correct. Perhaps change it to this:
+
+public SettlementType calcType(Settlement settlement)
+    {
+		SettlementType settlementType = SettlementType.DWELLING;
+		
+        for (SettlementType type : Arrays.asList(SettlementType.values()))
+            if (type.getSizeCo() >= settlement.getSize())
+                return settlementType;
+            settlementType = type;
+
+        return SettlementType.EMPIRE;
+    }
+-------
+
+Your unclaimColumn method in the SettlementController class does not work.
+The most simple problem is that it does not work when unclaiming one of two remaining columns, but also it doesn't ensure you can't get two large islands anyway, as long as they're not one columns in size. 
+I've presumed you're trying to stop any isolation at all as opposed to isolation of single columns? If you only care about stopping single columns being isolated, the second problem is not a problem. The first still is however.
+
+
+-------------
+What is up with the amount of curly brackets here, amongst other places? Get it together Dan. ;P Can do with 100% less curly backets.
+
+        for(Set<Column> forSalePlots : settlement.getForSaleLand().keySet())
+        {
+            for(Column forSaleColumn : forSalePlots)
+            {
+                if (plot.contains(forSaleColumn))
+                {
+                    return Error.PLOT_OVERLAP;
+                }
+            }
+        }
+-------------
+
+I don't quite understand what a plot is.
+

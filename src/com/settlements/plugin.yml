@@ -1,0 +1,7 @@
+name: Settlements
+main: com.settlements.Settlements
+version: 0.1
+commands:
+  earthcraft:
+    description: Info about the settlements plugin.
+    usage: /settlements
