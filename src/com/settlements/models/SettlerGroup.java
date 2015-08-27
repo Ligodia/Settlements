@@ -1,72 +1,37 @@
 package com.settlements.models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class SettlerGroup
 {
+    public enum SettlerType { FOUNDER, LEADER, SETTLER; }
 
     public static final int MAXLEADERS = 1;
 
-    private Settler founder;
-    private Set<Settler> leaders = new HashSet<>(1);
-    private Set<Settler> settlers = new HashSet<>();
+    private Map<Settler, SettlerType> settlers = new HashMap<>();
 
-    public SettlerGroup(Settler leader, Set<Settler> settlers)
+    public SettlerGroup(Settler founder, Set<Settler> settlers)
     {
-        this.leaders.add(leader);
-        this.settlers = settlers;
-        founder = leader;
+        this.settlers.put(founder, SettlerType.FOUNDER);
+
+        for (Settler settler : settlers)
+            this.settlers.put(settler, SettlerType.SETTLER);
     }
 
-    public SettlerGroup(Set<Settler> leaders, Set<Settler> settlers)
+    public SettlerGroup(Settler founder, Set<Settler> leaders, Set<Settler> settlers)
     {
-        this.leaders = leaders;
-        this.settlers = settlers;
+        this.settlers.put(founder, SettlerType.FOUNDER);
+
+        for (Settler leader : leaders)
+            this.settlers.put(leader, SettlerType.LEADER);
+
+        for (Settler settler : settlers)
+            this.settlers.put(settler, SettlerType.SETTLER);
     }
 
-    public SettlerGroup(Set<Settler> leaders)
+    public SettlerGroup(Settler founder)
     {
-        this.leaders = leaders;
-    }
-
-    public SettlerGroup(Settler leader)
-    {
-        this.leaders.add(leader);
-        founder = leader;
-    }
-
-    public boolean addSettler(Settler settler)
-    {
-        return settlers.add(settler);
-    }
-
-    public boolean removeSettler(Settler settler)
-    {
-        return settlers.remove(settler);
-    }
-
-	public Settler getFounder() {
-		return founder;
-	}
-
-    public boolean addLeader(Settler leader)
-    {
-        if (leaders.size() >= MAXLEADERS)
-            return false;
-
-        settlers.add(leader);
-        return true;
-    }
-
-    public int getSize()
-    {
-        return leaders.size() + settlers.size();
-    }
-
-    public boolean contains(Settler settler)
-    {
-        return leaders.contains(settler) || settlers.contains(settler);
+        this.settlers.put(founder, SettlerType.FOUNDER);
     }
 
     @Override
@@ -78,20 +43,18 @@ public class SettlerGroup
 
         SettlerGroup earthianGroup = (SettlerGroup) obj;
 
-        return earthianGroup.leaders.equals(leaders)
-                && earthianGroup.settlers.equals(settlers);
+        return earthianGroup.settlers.equals(settlers);
     }
 
     @Override
     public int hashCode()
     {
-        return 78 * leaders.hashCode() * settlers.hashCode();
+        return 78 * settlers.hashCode();
     }
 
     @Override
     public String toString()
     {
-        return String.format("Leaders:%s, Settlers:%s",
-                leaders.toString(), settlers.toString());
+        return String.format("Leaders:%s", settlers.toString());
     }
 }
