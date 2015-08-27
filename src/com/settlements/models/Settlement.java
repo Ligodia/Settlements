@@ -15,10 +15,10 @@ public class Settlement
     private int landAllocation;
     private SettlementType type;
 
-    public Settlement(String name, Settler leader, Set<Column> land)
+    public Settlement(String name, Settler founder, Set<Column> land)
     {
         this.name = name;
-        inhabitants = new SettlerGroup(leader);
+        inhabitants = new SettlerGroup(founder);
         this.land = land;
         type = SettlementType.DWELLING;
     }
@@ -103,10 +103,10 @@ public class Settlement
         this.name = name;
     }
 
-    public int getSize()
-    {
-        return inhabitants.getSize();
-    }
+//    public int getSize()
+//    {
+//        return inhabitants.getSize();
+//    }
 
     @Override
     public boolean equals(Object o)
