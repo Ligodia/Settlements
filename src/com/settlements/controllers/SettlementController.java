@@ -183,7 +183,7 @@ public class SettlementController
      * @return the created settlement, returns null if a settlement with the
      * same name already exists
      */
-    public Error createSettlement(String name, Settler leader, Set<Column> land)
+    public Error createSettlement(String name, Settler leader, Column land)
     {
 
         if (settlements.containsKey(name))
@@ -209,59 +209,5 @@ public class SettlementController
             return Error.SETTLEMENT_DOESNT_EXIST;
 
         return null;
-    }
-
-    /**
-     * Creates a plot with the given set of columns
-     *
-     * @param settlement the settlement to create the plot in
-     * @param plot the plot to create
-     * @return error if unsuccessful null otherwise
-     */
-    public Error createPlot(Settlement settlement, Set<Column> plot) {
-
-        if(!settlement.getLand().containsAll(plot)) return Error.BLOCK_ISNT_CLAIMED;
-
-        for(Set<Column> forSalePlots : settlement.getForSaleLand().keySet())
-        {
-            for(Column forSaleColumn : forSalePlots)
-            {
-                if (plot.contains(forSaleColumn))
-                {
-                    return Error.PLOT_OVERLAP;
-                }
-            }
-        }
-
-        for(Set<Column> plots : settlement.getPlots().keySet())
-        {
-            for(Column column : plots)
-            {
-                if (plot.contains(column))
-                {
-                    return Error.PLOT_OVERLAP;
-                }
-            }
-        }
-
-        settlement.getForSaleLand().put(plot, -1d);
-
-        return null;
-    }
-
-    /**
-     * Removes a plot with the given set of columns
-     *
-     * @param settlement the settlement to remove the plot from
-     * @param plot the plot to remove
-     * @return error if unsuccessful null otherwise
-     */
-    public Error removePlot(Settlement settlement, Set<Column> plot)
-    {
-        if(settlement.getPlots().remove(plot) != null) return null;
-
-        if(settlement.getForSaleLand().remove(plot) != null) return null;
-
-        return Error.NO_SUCH_PLOT;
     }
 }

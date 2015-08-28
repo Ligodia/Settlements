@@ -1,6 +1,7 @@
 package com.settlements.listeners;
 
 import com.settlements.Settlements;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -10,7 +11,8 @@ import org.bukkit.command.CommandSender;
  */
 public class CommandListener implements CommandExecutor
 {
-    private final Settlements plugin;
+    @SuppressWarnings("unused")
+	private final Settlements plugin;
 
     public CommandListener(Settlements plugin)
     {

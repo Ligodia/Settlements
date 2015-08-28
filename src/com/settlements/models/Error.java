@@ -15,8 +15,8 @@ public enum Error
             + "another block from your land"),
     LAST_BLOCK("You cannot remove the last block of a settlement"),
     BLOCK_ISNT_CLAIMED("Block must be claimed by your settlement to do this"),
-    PLOT_OVERLAP("Plot would overlap another"),
-    NO_SUCH_PLOT("The plot you specified does not exist");
+    PLAYER_ALREADY_HAS_PERMISSIONS("The specified player already has permissions in this plot."),
+    ALL_COLUMNS_ALREADY_IN_PLOT("The square of columns you've specified are all already in the plot.");
 
     private String message;
 
