@@ -9,60 +9,37 @@ public class Settlement
 {
     private String name;
     private SettlerGroup inhabitants;
-    private Set<Column> land = new HashSet<>();
-    private Map<Set<Column>, Double> forSaleLand = new HashMap<Set<Column>, Double>();
-    private Map<Set<Column>, Settler> plots = new HashMap<Set<Column>, Settler>();
+    private Set<Column> land;
     private int landAllocation;
     private SettlementType type;
 	private Settlement parentSettlement;
-	private Set<Settlement> childSettlements = new HashSet<Settlement>();
+	private Set<Settlement> childSettlements;
+    private boolean forSale;
+    private double forSalePrice;
 
-    public Settlement(String name, Settler founder, Set<Column> land, Settlement superSettlement)
+    public Settlement(String name, Settler founder, Set<Column> land, Settlement parentSettlement)
     {
         this.name = name;
         inhabitants = new SettlerGroup(founder);
         this.land = land;
-        this.parentSettlement = superSettlement;
-        superSettlement.addChildSettlement(this);
+        this.parentSettlement = parentSettlement;
+        parentSettlement.addChildSettlement(this);
         type = SettlementType.DWELLING;
-    }
-    
-    public Settlement(String name, Settler founder, Set<Column> land)
-    {
-        this.name = name;
-        inhabitants = new SettlerGroup(founder);
-        this.land = land;
-        type = SettlementType.DWELLING;
-    }
-    
-    public Map<Set<Column>, Double> getForSaleLand()
-    {
-        return forSaleLand;
-    }
-
-    public void setForSaleLand(Map<Set<Column>, Double> forSaleLand)
-    {
-        this.forSaleLand = forSaleLand;
-    }
-
-    public Map<Set<Column>, Settler> getPlots()
-    {
-        return plots;
-    }
-
-    public void setPlots(Map<Set<Column>, Settler> plots)
-    {
-        this.plots = plots;
     }
 
     public boolean addColumn(Column column)
     {
+        //TODO:Check for and return errors
+        if(land == null) land = new HashSet<Column>();
+
         return land.add(column);
     }
 
-    public boolean removeColumn(Column column)
+    public Error removeColumn(Column column)
     {
-        return land.remove(column);
+        if(land == null) return Error.NO_SUCH_COLUMN;
+
+        return land.remove(column) ? null : Error.NO_SUCH_COLUMN;
     }
 
     public Set<Column> getLand()
@@ -70,19 +47,9 @@ public class Settlement
         return land;
     }
 
-    public void setLand(Set<Column> land)
-    {
-        this.land = land;
-    }
-
     public SettlerGroup getInhabitants()
     {
         return inhabitants;
-    }
-
-    public void setInhabitants(SettlerGroup inhabitants)
-    {
-        this.inhabitants = inhabitants;
     }
 
     public int getLandAllocation()
@@ -98,11 +65,6 @@ public class Settlement
     public SettlementType getType()
     {
         return type;
-    }
-
-    public void setType(SettlementType type)
-    {
-        this.type = type;
     }
 
     public String getName()
@@ -135,19 +97,18 @@ public class Settlement
 		return childSettlements;
 	}
 
-	public void setChildSettlements(Set<Settlement> childSettlements) 
+	public Error addChildSettlement(Settlement childSettlement)
 	{
-		this.childSettlements = childSettlements;
-	}
+        if(this.childSettlements == null)
+            childSettlements = new HashSet<Settlement>();
 
-	public boolean addChildSettlement(Settlement childSettlement) 
-	{
-		return childSettlements.add(childSettlement);
+		return childSettlements.add(childSettlement) ? null : Error.NO_SUCH_CHILD_SETTLEMENT;
 	}
 	
-	public boolean removeChildSettlement(Settlement childSettlement) 
-	{
-		return childSettlements.remove(childSettlement);
+	public Error removeChildSettlement(Settlement childSettlement)
+    {
+		return this.childSettlements == null || !childSettlements.remove(childSettlement)
+                ? Error.NO_SUCH_CHILD_SETTLEMENT : null;
 	}
 
 	public Settlement getParentSettlement() 
@@ -155,10 +116,25 @@ public class Settlement
 		return parentSettlement;
 	}
 
-	public void setParentSettlement(Settlement parentSettlement) 
+	public void setParentSettlement(Settlement parentSettlement)
 	{
 		this.parentSettlement = parentSettlement;
 	}
+
+    public void setForSale(double price)
+    {
+        forSale = true;
+        forSalePrice = price;
+    }
+
+    public Error setNotForSale()
+    {
+        if(!forSale) return Error.WAS_NOT_FOR_SALE;
+
+        forSale = false;
+
+        return null;
+    }
 
     @Override
     public boolean equals(Object o)

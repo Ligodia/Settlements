@@ -16,7 +16,10 @@ public enum Error
     LAST_BLOCK("You cannot remove the last block of a settlement"),
     BLOCK_ISNT_CLAIMED("Block must be claimed by your settlement to do this"),
     PLAYER_ALREADY_HAS_PERMISSIONS("The specified player already has permissions in this plot."),
-    ALL_COLUMNS_ALREADY_IN_PLOT("The square of columns you've specified are all already in the plot.");
+    ALL_COLUMNS_ALREADY_IN_PLOT("The square of columns you've specified are all already in the plot."),
+    NO_SUCH_CHILD_SETTLEMENT("The specified child does not exist in this settlement"),
+    NO_SUCH_COLUMN("The Specified column does not exist."),
+    WAS_NOT_FOR_SALE("Settlement was not for sale to start with");
 
     private String message;
 
