@@ -10,11 +10,23 @@ public class Settlement
     private String name;
     private SettlerGroup inhabitants;
     private Set<Column> land = new HashSet<>();
-    private Map<Set<Column>, Double> forSaleLand = new HashMap<>();
-    private Map<Set<Column>, Settler> plots = new HashMap<>();
+    private Map<Set<Column>, Double> forSaleLand = new HashMap<Set<Column>, Double>();
+    private Map<Set<Column>, Settler> plots = new HashMap<Set<Column>, Settler>();
     private int landAllocation;
     private SettlementType type;
+	private Settlement parentSettlement;
+	private Set<Settlement> childSettlements = new HashSet<Settlement>();
 
+    public Settlement(String name, Settler founder, Set<Column> land, Settlement superSettlement)
+    {
+        this.name = name;
+        inhabitants = new SettlerGroup(founder);
+        this.land = land;
+        this.parentSettlement = superSettlement;
+        superSettlement.addChildSettlement(this);
+        type = SettlementType.DWELLING;
+    }
+    
     public Settlement(String name, Settler founder, Set<Column> land)
     {
         this.name = name;
@@ -22,7 +34,7 @@ public class Settlement
         this.land = land;
         type = SettlementType.DWELLING;
     }
-
+    
     public Map<Set<Column>, Double> getForSaleLand()
     {
         return forSaleLand;
@@ -105,8 +117,48 @@ public class Settlement
 
     public int getSize()
     {
-        return inhabitants.getSize();
+		int size = 0;
+
+		if (childSettlements.size() == 0)
+			return inhabitants.getSize();
+		else
+			size += inhabitants.getSize();
+
+		for (Settlement subSettlement : childSettlements)
+			size += subSettlement.getSize();
+
+		return size;
     }
+
+	public Set<Settlement> getChildSettlements() 
+	{
+		return childSettlements;
+	}
+
+	public void setChildSettlements(Set<Settlement> childSettlements) 
+	{
+		this.childSettlements = childSettlements;
+	}
+
+	public boolean addChildSettlement(Settlement childSettlement) 
+	{
+		return childSettlements.add(childSettlement);
+	}
+	
+	public boolean removeChildSettlement(Settlement childSettlement) 
+	{
+		return childSettlements.remove(childSettlement);
+	}
+
+	public Settlement getParentSettlement() 
+	{
+		return parentSettlement;
+	}
+
+	public void setParentSettlement(Settlement parentSettlement) 
+	{
+		this.parentSettlement = parentSettlement;
+	}
 
     @Override
     public boolean equals(Object o)

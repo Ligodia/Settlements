@@ -10,20 +10,20 @@ public class SettlerGroup
 
     private Map<Settler, SettlerType> settlers = new HashMap<>();
 
-    public SettlerGroup(Settler founder, Set<Settler> settlers)
-    {
-        this.settlers.put(founder, SettlerType.FOUNDER);
-
-        for (Settler settler : settlers)
-            this.settlers.put(settler, SettlerType.SETTLER);
-    }
-
     public SettlerGroup(Settler founder, Set<Settler> leaders, Set<Settler> settlers)
     {
         this.settlers.put(founder, SettlerType.FOUNDER);
 
         for (Settler leader : leaders)
             this.settlers.put(leader, SettlerType.LEADER);
+
+        for (Settler settler : settlers)
+            this.settlers.put(settler, SettlerType.SETTLER);
+    }
+
+    public SettlerGroup(Settler founder, Set<Settler> settlers)
+    {
+        this.settlers.put(founder, SettlerType.FOUNDER);
 
         for (Settler settler : settlers)
             this.settlers.put(settler, SettlerType.SETTLER);
