@@ -20,6 +20,7 @@ public enum Error
     NO_SUCH_CHILD_SETTLEMENT("The specified child does not exist in this settlement"),
     WAS_NOT_FOR_SALE("Settlement was not for sale to start with"),
     NO_NEGATIVES("This cannot be set to a negative number"),
+    MUST_BE_MEMBER_OF_SETTLEMENT("You must a member of this settlement"),
     COLUMN_ALREADY_ADDED("This column was already added to the settlement");
 
     private String message;

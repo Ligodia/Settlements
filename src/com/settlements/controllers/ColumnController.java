@@ -27,7 +27,6 @@ public class ColumnController
      */
     public boolean containsLocation(Column column, Location location)
     {
-
         int columnX = column.getX();
         double locationX = location.getX();
         int columnZ = column.getZ();
@@ -47,7 +46,6 @@ public class ColumnController
      */
     public List<Block> getBlocks(Column column)
     {
-
         List<Block> blocks = new ArrayList<Block>();
 
         for (int y = 0; y < 256; y++)
@@ -72,7 +70,6 @@ public class ColumnController
      */
     public Set<Column> getAdjacent(Column column)
     {
-
         Set<Column> columns = new HashSet<>();
 
         columns.add(new Column(column.getWorld(), column.getX() - 1, column.getZ()));

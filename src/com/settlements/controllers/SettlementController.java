@@ -16,11 +16,16 @@ public class SettlementController
 {
 
     private ColumnController columnController;
+    private SettlerController settlerController;
+
     private Map<String, Settlement> settlements = new HashMap<String, Settlement>();
 
-    public SettlementController(ColumnController columnController)
+    public SettlementController(
+            ColumnController columnController,
+            SettlerController settlerController)
     {
         this.columnController = columnController;
+        this.settlerController = settlerController;
     }
 
     /**
@@ -174,20 +179,42 @@ public class SettlementController
      * @param name      the name of the new settlement
      * @param leader    the leader of the new settlement
      * @param land      the starting land of the new settlement
-     * @param parent    the parent of the settlement you are creating
      * @return the created settlement, returns null if a settlement with the
      * same name already exists
      */
-    public Error createSettlement(String name, Settler leader, Set<Column> land, Settlement parent)
+    public Error createSettlement(String name, Settler leader, Set<Column> land)
     {
         if (settlements.containsKey(name))
             return Error.SETTLEMENT_ALREADY_EXISTS;
 
-
-
-        Settlement settlement = new Settlement(name, leader, land, parent);
+        Settlement settlement = new Settlement(name, leader, land, null);
 
         settlements.put(name, settlement);
+
+        return null;
+    }
+
+    /**
+     * Creates a child settlement with no name or leader. Analogous to a plot
+     *
+     * @param creator   the original creator of the new settlement
+     * @param land      the starting land of the new settlement
+     * @param parent    the parent of the settlement you are creating
+     * @return the created settlement, returns null if a settlement with the
+     * same name already exists
+     */
+    public Error createSubSettlement(Settler creator, Set<Column> land, Settlement parent)
+    {
+        if(!parent.contains(creator)) return Error.MUST_BE_MEMBER_OF_SETTLEMENT;
+
+        // TODO: Add error
+        // if(!settlerController.isStandingInSettlement(creator, parent)) return Error;
+
+
+
+        Settlement settlement = new Settlement(null, null, land, parent);
+
+        parent.addChildSettlement(settlement);
 
         return null;
     }
@@ -206,5 +233,4 @@ public class SettlementController
 
         return null;
     }
-
 }

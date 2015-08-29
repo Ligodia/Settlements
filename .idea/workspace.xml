@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b846be17-10ea-400e-ab8c-8a0e47d5109b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/settlements/models/SettlerType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/settlements/controllers/ColumnController.java" afterPath="$PROJECT_DIR$/src/com/settlements/controllers/ColumnController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/settlements/models/Error.java" afterPath="$PROJECT_DIR$/src/com/settlements/models/Error.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/settlements/models/Settlement.java" afterPath="$PROJECT_DIR$/src/com/settlements/models/Settlement.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/settlements/controllers/SettlementController.java" afterPath="$PROJECT_DIR$/src/com/settlements/controllers/SettlementController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/settlements/models/SettlerGroup.java" afterPath="$PROJECT_DIR$/src/com/settlements/models/SettlerGroup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/settlements/controllers/SettlerController.java" afterPath="$PROJECT_DIR$/src/com/settlements/controllers/SettlerController.java" />
     </list>
     <ignored path="Settlements.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,18 +32,15 @@
         <entry file="file://$PROJECT_DIR$/src/com/settlements/models/Settlement.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="91" column="62" selection-start-line="91" selection-start-column="62" selection-end-line="91" selection-end-column="62" />
+              <caret line="90" column="4" selection-start-line="90" selection-start-column="4" selection-end-line="90" selection-end-column="4" />
               <folding>
-                <element signature="e#898#899#0" expanded="true" />
-                <element signature="e#925#926#0" expanded="true" />
+                <element signature="method#Settlement#0;class#Settlement#0" expanded="false" />
+                <element signature="method#setName#0;class#Settlement#0" expanded="false" />
                 <element signature="method#getLeaders#0;class#Settlement#0" expanded="false" />
-                <element signature="e#1419#1420#0" expanded="true" />
-                <element signature="e#1483#1484#0" expanded="true" />
+                <element signature="method#removeColumn#0;class#Settlement#0" expanded="false" />
                 <element signature="method#addColumn#0;class#Settlement#0" expanded="false" />
-                <element signature="e#1849#1850#0" expanded="true" />
-                <element signature="e#1886#1887#0" expanded="true" />
-                <element signature="e#2123#2124#0" expanded="true" />
-                <element signature="e#2150#2151#0" expanded="true" />
+                <element signature="method#setLandAllocation#0;class#Settlement#0" expanded="false" />
+                <element signature="method#setType#0;class#Settlement#0" expanded="false" />
                 <element signature="method#addChildSettlement#0;class#Settlement#0" expanded="false" />
                 <element signature="method#removeChildSettlement#0;class#Settlement#0" expanded="false" />
                 <element signature="method#setForSale#0;class#Settlement#0" expanded="false" />
@@ -59,11 +53,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SettlementController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SettlementController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/settlements/controllers/SettlementController.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.2896936">
+              <caret line="209" column="11" selection-start-line="209" selection-start-column="11" selection-end-line="209" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SettlerController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/settlements/controllers/SettlerController.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <caret line="61" column="45" selection-start-line="61" selection-start-column="45" selection-end-line="61" selection-end-column="45" />
+              <folding>
+                <element signature="e#556#557#0" expanded="true" />
+                <element signature="e#612#613#0" expanded="true" />
+                <element signature="e#859#860#0" expanded="true" />
+                <element signature="e#902#903#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ColumnController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/settlements/controllers/ColumnController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -86,10 +105,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SettlerType.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SettlerType.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/settlements/models/SettlerType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1183844">
+            <state vertical-scroll-proportion="0.0">
               <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
               <folding />
             </state>
@@ -110,7 +129,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/settlements/models/Error.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+              <caret line="22" column="70" selection-start-line="22" selection-start-column="70" selection-end-line="22" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -140,8 +159,10 @@
         <option value="$PROJECT_DIR$/src/com/settlements/models/Plot.java" />
         <option value="$PROJECT_DIR$/src/com/settlements/models/SettlerType.java" />
         <option value="$PROJECT_DIR$/src/com/settlements/models/SettlerGroup.java" />
-        <option value="$PROJECT_DIR$/src/com/settlements/models/Error.java" />
         <option value="$PROJECT_DIR$/src/com/settlements/models/Settlement.java" />
+        <option value="$PROJECT_DIR$/src/com/settlements/controllers/SettlerController.java" />
+        <option value="$PROJECT_DIR$/src/com/settlements/controllers/ColumnController.java" />
+        <option value="$PROJECT_DIR$/src/com/settlements/models/Error.java" />
         <option value="$PROJECT_DIR$/src/com/settlements/controllers/SettlementController.java" />
       </list>
     </option>
@@ -569,24 +590,24 @@
       <updated>1440699120726</updated>
       <workItem from="1440699122904" duration="9164000" />
       <workItem from="1440791677275" duration="11217000" />
-      <workItem from="1440844159680" duration="24357000" />
+      <workItem from="1440844159680" duration="29778000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44738000" />
+    <option name="totallyTimeSpent" value="50159000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32946146" sideWeight="0.49375" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2122492" sideWeight="0.54583335" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2122492" sideWeight="0.5541667" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2122492" sideWeight="0.45416668" order="12" side_tool="false" content_ui="tabs" x="99" y="93" width="1736" height="856" />
+      <window_info id="Documentation" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2122492" sideWeight="0.44583333" order="12" side_tool="false" content_ui="tabs" x="99" y="93" width="1736" height="856" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -634,16 +655,13 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#898#899#0" expanded="true" />
-            <element signature="e#925#926#0" expanded="true" />
+            <element signature="method#Settlement#0;class#Settlement#0" expanded="false" />
+            <element signature="method#setName#0;class#Settlement#0" expanded="false" />
             <element signature="method#getLeaders#0;class#Settlement#0" expanded="false" />
-            <element signature="e#1419#1420#0" expanded="true" />
-            <element signature="e#1483#1484#0" expanded="true" />
+            <element signature="method#removeColumn#0;class#Settlement#0" expanded="false" />
             <element signature="method#addColumn#0;class#Settlement#0" expanded="false" />
-            <element signature="e#1849#1850#0" expanded="true" />
-            <element signature="e#1886#1887#0" expanded="true" />
-            <element signature="e#2123#2124#0" expanded="true" />
-            <element signature="e#2150#2151#0" expanded="true" />
+            <element signature="method#setLandAllocation#0;class#Settlement#0" expanded="false" />
+            <element signature="method#setType#0;class#Settlement#0" expanded="false" />
             <element signature="method#addChildSettlement#0;class#Settlement#0" expanded="false" />
             <element signature="method#removeChildSettlement#0;class#Settlement#0" expanded="false" />
             <element signature="method#setForSale#0;class#Settlement#0" expanded="false" />
@@ -683,16 +701,13 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="100" column="11" selection-start-line="100" selection-start-column="11" selection-end-line="100" selection-end-column="11" />
           <folding>
-            <element signature="e#898#899#0" expanded="true" />
-            <element signature="e#925#926#0" expanded="true" />
+            <element signature="method#Settlement#0;class#Settlement#0" expanded="false" />
+            <element signature="method#setName#0;class#Settlement#0" expanded="false" />
             <element signature="method#getLeaders#0;class#Settlement#0" expanded="false" />
-            <element signature="e#1419#1420#0" expanded="true" />
-            <element signature="e#1483#1484#0" expanded="true" />
+            <element signature="method#removeColumn#0;class#Settlement#0" expanded="false" />
             <element signature="method#addColumn#0;class#Settlement#0" expanded="false" />
-            <element signature="e#1849#1850#0" expanded="true" />
-            <element signature="e#1886#1887#0" expanded="true" />
-            <element signature="e#2123#2124#0" expanded="true" />
-            <element signature="e#2150#2151#0" expanded="true" />
+            <element signature="method#setLandAllocation#0;class#Settlement#0" expanded="false" />
+            <element signature="method#setType#0;class#Settlement#0" expanded="false" />
             <element signature="method#addChildSettlement#0;class#Settlement#0" expanded="false" />
             <element signature="method#removeChildSettlement#0;class#Settlement#0" expanded="false" />
             <element signature="method#setForSale#0;class#Settlement#0" expanded="false" />
@@ -720,45 +735,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/settlements/models/SettlementType.java">
+    <entry file="file://$PROJECT_DIR$/src/com/settlements/controllers/SettlerController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/settlements/models/Error.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/settlements/models/Settlement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="91" column="62" selection-start-line="91" selection-start-column="62" selection-end-line="91" selection-end-column="62" />
+          <caret line="61" column="45" selection-start-line="61" selection-start-column="45" selection-end-line="61" selection-end-column="45" />
           <folding>
-            <element signature="e#898#899#0" expanded="true" />
-            <element signature="e#925#926#0" expanded="true" />
-            <element signature="method#getLeaders#0;class#Settlement#0" expanded="false" />
-            <element signature="e#1419#1420#0" expanded="true" />
-            <element signature="e#1483#1484#0" expanded="true" />
-            <element signature="method#addColumn#0;class#Settlement#0" expanded="false" />
-            <element signature="e#1849#1850#0" expanded="true" />
-            <element signature="e#1886#1887#0" expanded="true" />
-            <element signature="e#2123#2124#0" expanded="true" />
-            <element signature="e#2150#2151#0" expanded="true" />
-            <element signature="method#addChildSettlement#0;class#Settlement#0" expanded="false" />
-            <element signature="method#removeChildSettlement#0;class#Settlement#0" expanded="false" />
-            <element signature="method#setForSale#0;class#Settlement#0" expanded="false" />
-            <element signature="method#setNotForSale#0;class#Settlement#0" expanded="false" />
-            <element signature="method#equals#0;class#Settlement#0" expanded="false" />
-            <element signature="method#hashCode#0;class#Settlement#0" expanded="false" />
-            <element signature="method#toString#0;class#Settlement#0" expanded="false" />
+            <element signature="e#556#557#0" expanded="true" />
+            <element signature="e#612#613#0" expanded="true" />
+            <element signature="e#859#860#0" expanded="true" />
+            <element signature="e#902#903#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/settlements/controllers/ColumnController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -777,18 +771,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/settlements/controllers/SettlementController.java">
+    <entry file="file://$PROJECT_DIR$/src/com/settlements/models/SettlerType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/settlements/models/SettlerType.java">
+    <entry file="file://$PROJECT_DIR$/src/com/settlements/models/SettlementType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1183844">
-          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/settlements/models/Settlement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="90" column="4" selection-start-line="90" selection-start-column="4" selection-end-line="90" selection-end-column="4" />
+          <folding>
+            <element signature="method#Settlement#0;class#Settlement#0" expanded="false" />
+            <element signature="method#setName#0;class#Settlement#0" expanded="false" />
+            <element signature="method#getLeaders#0;class#Settlement#0" expanded="false" />
+            <element signature="method#removeColumn#0;class#Settlement#0" expanded="false" />
+            <element signature="method#addColumn#0;class#Settlement#0" expanded="false" />
+            <element signature="method#setLandAllocation#0;class#Settlement#0" expanded="false" />
+            <element signature="method#setType#0;class#Settlement#0" expanded="false" />
+            <element signature="method#addChildSettlement#0;class#Settlement#0" expanded="false" />
+            <element signature="method#removeChildSettlement#0;class#Settlement#0" expanded="false" />
+            <element signature="method#setForSale#0;class#Settlement#0" expanded="false" />
+            <element signature="method#setNotForSale#0;class#Settlement#0" expanded="false" />
+            <element signature="method#equals#0;class#Settlement#0" expanded="false" />
+            <element signature="method#hashCode#0;class#Settlement#0" expanded="false" />
+            <element signature="method#toString#0;class#Settlement#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/settlements/models/Error.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="70" selection-start-line="22" selection-start-column="70" selection-end-line="22" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/settlements/controllers/SettlementController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2896936">
+          <caret line="209" column="11" selection-start-line="209" selection-start-column="11" selection-end-line="209" selection-end-column="11" />
           <folding />
         </state>
       </provider>
