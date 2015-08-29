@@ -32,9 +32,14 @@ public class SettlementController
     public SettlementType calcType(Settlement settlement)
     {
 
+        SettlementType settlementType = SettlementType.DWELLING;
+
         for (SettlementType type : Arrays.asList(SettlementType.values()))
-            if (type.getSizeCo() >= settlement.getSize())
-                return type;
+        {
+            if (type.getSizeCo() >= settlement.size())
+                return settlementType;
+            settlementType = type;
+        }
 
         return SettlementType.EMPIRE;
     }
@@ -121,10 +126,7 @@ public class SettlementController
 
 		if (checkedLand.size() == settlement.getLand().size())
 
-			if (settlement.removeColumn(column))
-				return null;
-			else
-				return Error.BLOCK_ISNT_CLAIMED;
+			return settlement.removeColumn(column);
 
 		return Error.WILL_ISOLATE_BLOCK;
 	}
@@ -139,37 +141,29 @@ public class SettlementController
      */
     public Error addInhabitant(Settlement settlement, Settler settler)
     {
-
-        if (!settlement.getInhabitants().contains(settler))
+        if (!settlement.contains(settler))
         {
-
-            settlement.getInhabitants().addSettler(settler);
+            settlement.addSettler(settler);
             settlement.setType(calcType(settlement));
             return null;
-
         }
         else
         {
-
             return Error.PLAYER_ALREADY_IN_SETTLEMENT;
         }
-
     }
 
     public Error removeInhabitant(Settlement settlement, Settler settler)
     {
 
-        if (settlement.getInhabitants().contains(settler))
+        if (settlement.contains(settler))
         {
-
-            settlement.getInhabitants().removeSettler(settler);
+            settlement.removeSettler(settler);
             settlement.setType(calcType(settlement));
             return null;
-
         }
         else
         {
-
             return Error.PLAYER_NOT_IN_SETTLEMENT;
         }
     }
@@ -177,19 +171,21 @@ public class SettlementController
     /**
      * Creates a settlement.
      *
-     * @param name   the name of the new settlement
-     * @param leader the leader of the new settlement
-     * @param land   the starting land of the new settlement
+     * @param name      the name of the new settlement
+     * @param leader    the leader of the new settlement
+     * @param land      the starting land of the new settlement
+     * @param parent    the parent of the settlement you are creating
      * @return the created settlement, returns null if a settlement with the
      * same name already exists
      */
-    public Error createSettlement(String name, Settler leader, Column land)
+    public Error createSettlement(String name, Settler leader, Set<Column> land, Settlement parent)
     {
-
         if (settlements.containsKey(name))
             return Error.SETTLEMENT_ALREADY_EXISTS;
 
-        Settlement settlement = new Settlement(name, leader, land);
+
+
+        Settlement settlement = new Settlement(name, leader, land, parent);
 
         settlements.put(name, settlement);
 
@@ -210,4 +206,5 @@ public class SettlementController
 
         return null;
     }
+
 }

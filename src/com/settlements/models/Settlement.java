@@ -1,14 +1,11 @@
 package com.settlements.models;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
-public class Settlement
+public class Settlement extends SettlerGroup
 {
     private String name;
-    private SettlerGroup inhabitants;
     private Set<Column> land;
     private int landAllocation;
     private SettlementType type;
@@ -19,52 +16,16 @@ public class Settlement
 
     public Settlement(String name, Settler founder, Set<Column> land, Settlement parentSettlement)
     {
+        super(founder);
+
+        if(((name == null || founder == null) && parentSettlement == null) || land == null)
+            throw new IllegalArgumentException();
+
         this.name = name;
-        inhabitants = new SettlerGroup(founder);
         this.land = land;
         this.parentSettlement = parentSettlement;
         parentSettlement.addChildSettlement(this);
         type = SettlementType.DWELLING;
-    }
-
-    public boolean addColumn(Column column)
-    {
-        //TODO:Check for and return errors
-        if(land == null) land = new HashSet<Column>();
-
-        return land.add(column);
-    }
-
-    public Error removeColumn(Column column)
-    {
-        if(land == null) return Error.NO_SUCH_COLUMN;
-
-        return land.remove(column) ? null : Error.NO_SUCH_COLUMN;
-    }
-
-    public Set<Column> getLand()
-    {
-        return land;
-    }
-
-    public SettlerGroup getInhabitants()
-    {
-        return inhabitants;
-    }
-
-    public int getLandAllocation()
-    {
-        return landAllocation;
-    }
-
-    public void setLandAllocation(int landAllocation)
-    {
-        this.landAllocation = landAllocation;
-    }
-
-    public SettlementType getType()
-    {
-        return type;
     }
 
     public String getName()
@@ -74,27 +35,68 @@ public class Settlement
 
     public void setName(String name)
     {
+        if (name == null) throw new IllegalArgumentException();
+
         this.name = name;
     }
 
-    public int getSize()
+    public Set<Settler> getLeaders()
     {
-		int size = 0;
+        Set<Settler> leaders = new HashSet<>();
 
-		if (childSettlements.size() == 0)
-			return inhabitants.getSize();
-		else
-			size += inhabitants.getSize();
+        for (Settler settler : keySet())
+            if (get(settler) == SettlerType.LEADER
+                    || get(settler) == SettlerType.LEADER)
+                leaders.add(settler);
 
-		for (Settlement subSettlement : childSettlements)
-			size += subSettlement.getSize();
+        return leaders;
+    }
 
-		return size;
+    public Set<Column> getLand()
+    {
+        return land != null ? new HashSet<>(land) : null;
+    }
+
+    public Error removeColumn(Column column)
+    {
+        return land != null && land.remove(column) ? null : Error.BLOCK_ISNT_CLAIMED;
+    }
+
+    public Error addColumn(Column column)
+    {
+        if(land == null) land = new HashSet<Column>();
+
+        return land.add(column) ? null : Error.COLUMN_ALREADY_ADDED;
+    }
+
+    public int getLandAllocation()
+    {
+        return landAllocation;
+    }
+
+    public Error setLandAllocation(int landAllocation)
+    {
+        if(landAllocation < 0) return Error.NO_NEGATIVES;
+
+        this.landAllocation = landAllocation;
+        return null;
+    }
+
+    public SettlementType getType()
+    {
+        return type;
+    }
+
+    public void setType(SettlementType type)
+    {
+        if(type == null) throw new IllegalArgumentException();
+
+        this.type = type;
     }
 
 	public Set<Settlement> getChildSettlements() 
 	{
-		return childSettlements;
+		return new HashSet<Settlement>(childSettlements);
 	}
 
 	public Error addChildSettlement(Settlement childSettlement)
@@ -121,10 +123,13 @@ public class Settlement
 		this.parentSettlement = parentSettlement;
 	}
 
-    public void setForSale(double price)
+    public Error setForSale(double price)
     {
+        if(price < 0) return Error.NO_NEGATIVES;
+
         forSale = true;
         forSalePrice = price;
+        return null;
     }
 
     public Error setNotForSale()
@@ -146,7 +151,6 @@ public class Settlement
         Settlement settlement = (Settlement) o;
 
         return settlement.name.equals(name)
-                && settlement.inhabitants.equals(inhabitants)
                 && settlement.land.equals(land)
                 && settlement.landAllocation == landAllocation
                 && settlement.type.equals(type);
@@ -155,9 +159,8 @@ public class Settlement
     @Override
     public int hashCode()
     {
-        return 12 * name.hashCode() * inhabitants.hashCode()
-                * land.hashCode() * landAllocation
-                * type.hashCode();
+        return 12 * name.hashCode() *  land.hashCode()
+                * landAllocation * type.hashCode();
     }
 
     @Override
@@ -165,7 +168,7 @@ public class Settlement
     {
         return String.format("Name:%s, Inhabitants:%s, Land:%s, " +
                         "Land Allocation:%d, Type:%s",
-                name, inhabitants.toString(), land.toString(),
+                name, land.toString(),
                 landAllocation, type.toString());
     }
 }
