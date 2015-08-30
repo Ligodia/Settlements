@@ -14,6 +14,7 @@ import com.settlements.models.Settler;
 
 public class SettlementController
 {
+    public static final int MINIMUM_SIZE = 1;
 
     private ColumnController columnController;
     private SettlerController settlerController;
@@ -36,7 +37,6 @@ public class SettlementController
      */
     public SettlementType calcType(Settlement settlement)
     {
-
         SettlementType settlementType = SettlementType.DWELLING;
 
         for (SettlementType type : Arrays.asList(SettlementType.values()))
@@ -58,8 +58,6 @@ public class SettlementController
      */
     public Error claimColumn(Settlement settlement, Column column)
     {
-
-        //
         if (!columnController.isAdjacent(column, settlement.getLand()))
             return Error.BLOCK_IS_NOT_ADJACENT;
 
@@ -71,6 +69,8 @@ public class SettlementController
         for (Settlement oneOfAllSettlements : settlements.values())
             if (oneOfAllSettlements.getLand().contains(column))
                 return Error.LAND_ALREADY_CLAIMED;
+
+        settlement.addColumn(column);
 
         return null;
     }
@@ -84,10 +84,13 @@ public class SettlementController
      * @param column    	The column you are removing from the settlement
      * @return 				The error code
      */
-	public Error unclaimColumn(Settlement settlement, Column column) {
+	public Error unclaimColumn(Settler settler, Settlement settlement, Column column) {
 
-		if (settlement.getLand().size() == 1)
-			return Error.LAST_BLOCK;
+        if (!settlement.contains(settler))
+            return Error.MUST_BE_MEMBER_OF_SETTLEMENT;
+
+		if (settlement.getLand().size() <= MINIMUM_SIZE)
+			return Error.MINIMUM_SIZE;
 
 		Set<Column> connectedLand = new HashSet<Column>();
 		Set<Column> checkedLand = new HashSet<Column>();
@@ -207,10 +210,8 @@ public class SettlementController
     {
         if(!parent.contains(creator)) return Error.MUST_BE_MEMBER_OF_SETTLEMENT;
 
-        // TODO: Add error
-        // if(!settlerController.isStandingInSettlement(creator, parent)) return Error;
-
-
+        if(!settlerController.isStandingInSettlement(creator, parent))
+            return Error.MUST_BE_STANDING_IN_SETTLEMENT;
 
         Settlement settlement = new Settlement(null, null, land, parent);
 
