@@ -5,22 +5,11 @@ import org.bukkit.entity.Player;
 public class Settler
 {
     private Player player;
-    private Settlement settlement;
     private Rank rank;
 
     public Settler(Player player)
     {
         this.player = player;
-    }
-
-    public Settlement getSettlement()
-    {
-        return settlement;
-    }
-
-    public void setSettlement(Settlement settlement)
-    {
-        this.settlement = settlement;
     }
 
     public Player getPlayer()
@@ -59,6 +48,6 @@ public class Settler
     @Override
     public int hashCode()
     {
-        return 67 * player.hashCode() * settlement.hashCode() * rank.hashCode();
+        return 67 * player.hashCode() * rank.hashCode();
     }
 }

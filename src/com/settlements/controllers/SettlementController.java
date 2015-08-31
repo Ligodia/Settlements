@@ -161,7 +161,14 @@ public class SettlementController
         }
     }
 
-    public Error removeInhabitant(Settlement settlement, Settler settler)
+    /**
+     * Removes an inhabitant from the settlement
+     *
+     * @param settlement the settlement the inhabitant is to be added to
+     * @param settler   the prospective inhabitant
+     * @return true if successful
+     */
+    public Error removeInhabitant(Settler remover, Settlement settlement, Settler settler)
     {
 
         if (settlement.contains(settler))

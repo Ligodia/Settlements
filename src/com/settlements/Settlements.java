@@ -10,10 +10,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 @SuppressWarnings("unused")
 public class Settlements extends JavaPlugin {
 
-	private SettlerController settlerController = new SettlerController();
 	private ColumnController columnController = new ColumnController();
-	private SettlementController settlementController = new SettlementController(
+	private SettlerController settlerController = new SettlerController(
 			columnController);
+	private SettlementController settlementController = new SettlementController(
+			columnController, settlerController);
 
 	@Override
 	public void onEnable() {
